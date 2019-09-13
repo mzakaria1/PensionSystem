@@ -40,10 +40,11 @@
                     </div><br />
                     @endif
                     <form action="{{ route('employees.store') }}" method="POST" class="form-horizontal form-label-left">
-                        {{csrf_field()}}
+
                         <span class="section">Personal Info</span>
 
                         <div class="item form-group">
+                            {{csrf_field()}}
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Employee Name <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -91,9 +92,8 @@
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="desig_id">
-                                    <option value="">Choose option</option>
                                     @foreach($design as $dg)
-                                    <option value="{{$dg->id}}">{{$dg->name}} {{old('desig_id')}} </option>
+                                    <option value="{{$dg->id}}">{{$dg->name}} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -112,8 +112,6 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Department</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="dept_id">
-                                    <option>Choose option</option>
-
                                     @foreach($dept as $d)
                                     <option value="{{$d->id}}">{{$d->name}}</option>
                                     @endforeach
@@ -125,7 +123,6 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Martial Status:</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="martial_status">
-                                    <option value="">Choose option</option>
                                     <option value="Married">Married</option>
                                     <option value="Single">Single</option>
                                     <option value="Divorced">Divorced</option>
@@ -137,7 +134,6 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Employee Status</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="emp_status">
-                                    <option value="">Choose option</option>
                                     <option value="Active">Active</option>
                                     <option value="Retired">Retired</option>
                                     <option value="Deceased">Deceased</option>
@@ -151,7 +147,6 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Employee Job</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="emp_job">
-                                    <option value="">Choose option</option>
                                     <option value="Faculty">Faculty</option>
                                     <option value="Staff">Staff</option>
                                 </select>
@@ -191,12 +186,12 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Region</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="region">
-                                    <option>Choose option</option>
-                                    <option>Punjab</option>
-                                    <option>Sindh</option>
-                                    <option>Balochistan</option>
-                                    <option>Kyber Pakhtunkhawan</option>
-                                    <option>Gilgit Baldistan</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Islamabad Capital">Islamabad Capital</option>
+                                    <option value="Sindh">Sindh</option>
+                                    <option value="Balochistan">Balochistan</option>
+                                    <option value="KPK">KPK</option>
+                                    <option value="Gilgit Baldistan">Gilgit Baldistan</option>
                                 </select>
                             </div>
                         </div>
@@ -204,12 +199,12 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Domicile</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <select class="form-control" name="domicile">
-                                    <option>Choose option</option>
-                                    <option>Punjab</option>
-                                    <option>Sindh</option>
-                                    <option>Balochistan</option>
-                                    <option>Kyber Pakhtunkhawan</option>
-                                    <option>Gilgit Baldistan</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Islamabad Capital">Islamabad Capital</option>
+                                    <option value="Sindh">Sindh</option>
+                                    <option value="Balochistan">Balochistan</option>
+                                    <option value="KPK">KPK</option>
+                                    <option value="Gilgit Baldistan">Gilgit Baldistan</option>
                                 </select>
                             </div>
                         </div>
@@ -218,12 +213,12 @@
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">Nationality
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input id="nationality" class="form-control col-md-7 col-xs-12" name="nationality" value="Pakistani" type="text">
+                                <input id="nationality" class="form-control col-md-7 col-xs-12" name="nationality" value="Pakistani" type="text" disabled>
                             </div>
                         </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nationality">Children <span class="required">*</span>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="children">Children <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input id="children" class="form-control col-md-7 col-xs-12" name="children" value="{{old('children')}}" placeholder="e.g 4" required="required" type="number">
@@ -231,7 +226,7 @@
                         </div>
 
                         <div class="item form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="per-addr">Address
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <textarea name="address" id="textarea" required="required" value="{{old('address')}}" class="form-control col-md-7 col-xs-12"></textarea>

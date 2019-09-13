@@ -17,13 +17,14 @@ class CreateArrearsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('pen_id')->unsigned();
             $table->integer('amount');
+            $table->string('status');
             $table->string('month');
             $table->year('fiscal_period');
             $table->timestamps();
 
             $table->foreign('pen_id')
-                    ->references('id')
-                    ->on('pensions');
+                ->references('id')
+                ->on('pensions');
         });
     }
 

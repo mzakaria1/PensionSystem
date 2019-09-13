@@ -18,4 +18,9 @@ class Employee extends Model
     {
         return $this->belongsTo('App\Designation', 'desig_id', 'id');
     }
+
+    public function pensioner()
+    {
+        return $this->hasOne('App\Pensioner', 'id', 'emp_id');
+    }
 }

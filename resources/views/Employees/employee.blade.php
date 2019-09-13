@@ -69,7 +69,7 @@
                             <td>{{$e->children}}</td>
                             <td>{{$e->created_at}}</td>
                             <td>{{$e->updated_at}}</td>
-                            <td align="center"><a id="edit_emp" class="btn btn-primary" href="{{URL::to('employees/'. $e->id .'/edit')}}">Edit</a>
+                            <td align="center"><a id="edit_emp" class="btn btn-primary" href="{{URL::to('employees/'.$e->id.'/edit')}}">Edit</a>
                                 <a id="delete_emp" type="submit" class="btn btn-danger">Delete</a></td>
                         </tr>
                         @endforeach

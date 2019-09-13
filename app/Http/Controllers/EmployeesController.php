@@ -50,32 +50,36 @@ class EmployeesController extends Controller
     public function store(Request $request)
     {
         //
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'cnic' => 'required',
-            'gender' => 'nullable',
-            'tell_no' => 'required',
-            'desig_id' => 'required',
-            'grade' => 'required',
-            'dept_id' => 'required',
-            'martial_status' => 'nullable',
-            'emp_job' => 'required',
-            'emp_type' => 'required',
-            'city' => 'required',
-            'religion' => 'nullable',
-            'region' => 'nullable',
-            'domicile' => 'nullable',
-            'nationality' => 'required',
-            'children' => 'required',
-            'address' => 'required',
-            'email' => 'required',
-            'appoint_date' => 'required',
-            'retire_date' => 'required'
 
-        ]);
+        $emp = new Employee();
+        $emp->name = $request->name;
+        // print_r($emp);
+        $emp->gender = $request->gender;
+        $emp->dob = $request->dob;
+        $emp->tell_no = $request->tell_no;
+        $emp->emp_status = $request->emp_status;
+        $emp->emp_job = $request->emp_job;
+        $emp->emp_type = $request->emp_type;
+        $emp->email = $request->email;
+        $emp->grade = $request->grade;
+        $emp->martial_status = $request->martial_status;
+        $emp->city = $request->city;
+        $emp->address = $request->address;
+        $emp->region = $request->region;
+        $emp->domicile = $request->domicile;
+        $emp->nationality = $request->nationality;
+        $emp->religion = $request->religion;
+        $emp->appoint_date = $request->appoint_date;
+        $emp->retire_date = $request->retire_date;
+        $emp->children = $request->children;
+        $emp->dept_id = $request->dept_id;
+        $emp->desig_id = $request->desig_id;
+        $emp->cnic = $request->cnic;
+        //print_r($emp);
 
-        print_r($validatedData);
-        $b = Employee::create($validatedData);
+        $emp->save();
+
+        //$b = Employee::create($validatedData);
         return redirect()->route('employees.index')
             ->with('success', 'New Employee has been Created Successfully');
     }
@@ -86,9 +90,10 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $emp)
     {
         //
+        return $emp;
     }
 
     /**
@@ -100,8 +105,10 @@ class EmployeesController extends Controller
     public function edit($id)
     {
         //
+        $design = Designation::all();
+        $dept = Department::all();
         $emp = Employee::findOrFail($id);
-        return view('Employees.edit_employees', ['emp' => $emp]);
+        return view('Employees.edit_employee', compact('emp', 'design', 'dept'));
     }
 
     /**
@@ -128,20 +135,25 @@ class EmployeesController extends Controller
     }
 
 
-    // This dispalys all the departments in the database
+
+
+
+
+
+    // This dispalys all the departments in the database in the table
     public function all_dept()
     {
         $dept = Department::all();
         return view('Employees.department', ['dept' => $dept]);
     }
 
-    // This Opens a new deptartment
+    // This Opens a new deptartment form
     public function create_dept()
     {
         return view('Employees.create_department');
     }
 
-    // This creates a new department
+    // This creates a new department and adds in Database
     public function store_dept(Request $request)
     {
         $validatedData = $request->validate([
@@ -155,20 +167,22 @@ class EmployeesController extends Controller
     }
 
 
-    // This dispalys all the Designation in the database
+
+
+    // This dispalys all the Designation from the database in the table
     public function all_design()
     {
         $design = Designation::all();
         return view('Employees.designation', ['design' => $design]);
     }
 
-    // This Opens a new deptartment
+    // This Opens deptartment form
     public function create_design()
     {
         return view('Employees.create_designation');
     }
 
-    // This creates a new department
+    // This creates a new department in the database
     public function store_design(Request $request)
     {
         $validatedData = $request->validate([

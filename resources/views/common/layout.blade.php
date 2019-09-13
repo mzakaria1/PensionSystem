@@ -81,9 +81,9 @@
                                 <!-- //Employees, Salaries, Designation, Department -->
                                 <li><a><i class="fa fa-users"></i> Employee Management <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="employees">Employees</a></li>
-                                        <li><a href="departments">Departments</a></li>
-                                        <li><a href="designations">Designation</a></li>
+                                        <li><a href="{{ URL::to('employees') }}">Employees</a></li>
+                                        <li><a href="{{ URL::to('departments') }}">Departments</a></li>
+                                        <li><a href="{{ URL::to('designations') }}">Designation</a></li>
                                     </ul>
                                 </li>
                                 <!-- //Banks -->

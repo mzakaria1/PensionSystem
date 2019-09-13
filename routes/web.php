@@ -25,10 +25,10 @@ Route::get('employee_form', 'MainController@employee_form');
 
 Route::get('pensioner_form', 'MainController@pensioner_form');
 
-// Department Routes
+// Department Routes in EmployeeController
 Route::get('departments', 'EmployeesController@all_dept');
 
-//Designation Routes
+//Designation Routes in EmployeeController
 Route::get('designations', 'EmployeesController@all_design');
 
 

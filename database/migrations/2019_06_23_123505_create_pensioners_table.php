@@ -25,8 +25,8 @@ class CreatePensionersTable extends Migration
             $table->timestamps();
 
             $table->foreign('emp_id')
-                    ->references('id')
-                    ->on('employees');
+                ->references('id')
+                ->on('employees');
         });
     }
 
